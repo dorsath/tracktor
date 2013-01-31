@@ -1,0 +1,4 @@
+%h2==#{@product.name}
+
+- @product.active_sprints.each do |sprint|
+  =sprint.name
