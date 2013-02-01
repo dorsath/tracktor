@@ -10,4 +10,9 @@ FactoryGirl.define do
   factory :issue do
     name {Faker::Name.name }
   end
+
+  factory :user do
+    email {Faker::Internet.email }
+    password "welkom123"
+  end
 end
