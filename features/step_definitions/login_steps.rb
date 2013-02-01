@@ -1,7 +1,10 @@
 include Warden::Test::Helpers
 
 Given /^I am logged in$/ do
-  login_as(user)
+  @user = user
+  login_as(@user)
+
+  @user
 end
 
 def user

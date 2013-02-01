@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   belongs_to :current_session, class_name: "Session"
+  has_many :sessions
+
 
   def current_issue
     current_session ? current_session.issue : nil

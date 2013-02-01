@@ -16,7 +16,7 @@ class Session < ActiveRecord::Base
   def stop
     if user.current_session == self
       update_attribute(:till, now)
-      user.update_attribute(current_session: nil)
+      user.update_attribute(:current_session, nil)
     end
   end
 

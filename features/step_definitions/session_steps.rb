@@ -12,14 +12,38 @@ When /^I continue the issue$/ do
 end
 
 Then /^I should have an active session$/ do
-  user.reload
-  user.current_session be_same_time(DateTime.now)
+  @user.reload
+  @user.current_session be_same_time(DateTime.now)
 end
 
 
 And /^the continue button should now be a stop button$/ do
   within ".issue_#{@issue.id}" do
     page.should have_button("stop")
+  end
+end
+
+Given /^an active issue$/ do
+  visit product_path(@product)
+  within ".issue_#{@issue.id}" do
+    click_button "continue"
+  end
+end
+
+When /^I stop the issue$/ do
+  within ".issue_#{@issue.id}" do
+    click_button "stop"
+  end
+end
+
+Then /^I should no longer have an active session$/ do
+  @user.reload
+  @user.current_session.should be_nil
+end
+
+Then /^the stop button should now be a continue button$/ do
+  within ".issue_#{@issue.id}" do
+    page.should have_button("continue")
   end
 end
 

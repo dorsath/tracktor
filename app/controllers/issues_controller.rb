@@ -11,7 +11,7 @@ class IssuesController < ApplicationController
   def stop
     issue = Issue.find(params[:id])
     if issue
-      session = User.current_session
+      session = current_user.current_session
       session.stop if session
     end
 

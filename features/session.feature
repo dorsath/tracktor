@@ -12,3 +12,10 @@ Feature: Session
     When I continue the issue
     Then I should have an active session
     And the continue button should now be a stop button
+
+  Scenario: Stop an active session
+    Given I have a product, sprint and issue
+    And an active issue
+    When I stop the issue
+    Then I should no longer have an active session
+    And the stop button should now be a continue button
