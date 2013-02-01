@@ -1,4 +1,8 @@
 %h2==#{@product.name}
 
 - @product.active_sprints.each do |sprint|
-  =sprint.name
+  %div{class: "sprint_#{sprint.id}"}
+    =sprint.name
+    - sprint.issues.each do |issue|
+      =issue.name
+

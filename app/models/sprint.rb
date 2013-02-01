@@ -1,5 +1,4 @@
 class Sprint < ActiveRecord::Base
-  attr_accessible :name
   belongs_to :product
-  
+  has_many :issues
 end
