@@ -1,4 +1,7 @@
 Feature: Sprints
+  Background:
+    Given I am logged in
+
   Scenario: Show all the sprints that are active
     Given I have a product
     And it has an active sprint

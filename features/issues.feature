@@ -1,4 +1,7 @@
 Feature: Issues
+  Background:
+    Given I am logged in
+
   Scenario: View the list of issues for a product
     Given I have a product
     And I have an active sprint with a couple issues

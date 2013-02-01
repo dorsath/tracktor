@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+  belongs_to :current_session, class_name: "Session"
+
+  def current_issue
+    current_session ? current_session.issue : nil
+  end
 end

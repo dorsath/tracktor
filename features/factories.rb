@@ -5,6 +5,7 @@ FactoryGirl.define do
 
   factory :sprint do
     name {Faker::Name.name }
+    active true
   end
 
   factory :issue do

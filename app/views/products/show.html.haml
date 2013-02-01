@@ -4,5 +4,15 @@
   %div{class: "sprint_#{sprint.id}"}
     =sprint.name
     - sprint.issues.each do |issue|
-      =issue.name
+      %table{class: "issue_#{issue.id}"}
+        %tr
+          %td
+            =issue.name
+          %td
+            - if current_user.current_issue == issue
+              = form_for issue, url: stop_issue_path(issue) do |f|
+                =f.submit "stop"
+            - else
+              = form_for issue, url: continue_issue_path(issue) do |f|
+                =f.submit "continue"
 
