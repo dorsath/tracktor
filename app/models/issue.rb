@@ -1,5 +1,5 @@
 class Issue < ActiveRecord::Base
-  attr_accessible :name, :sprint
+  attr_accessible :name, :sprint, :user
   belongs_to :sprint
   has_many :sessions
 

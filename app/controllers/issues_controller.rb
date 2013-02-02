@@ -27,4 +27,19 @@ class IssuesController < ApplicationController
 
     render text: (issue && sprint)
   end
+
+  def create
+    product = Product.find(params[:product_id])
+    if product
+      issue = product.backlog.issues.create(params[:issue])
+    end
+
+    render text: (product && issue) ? issue.id : false
+  end
+
+  def show
+    @issue = Issue.find(params[:id])
+
+    render layout: false
+  end
 end

@@ -29,3 +29,27 @@
   }).disableSelection();
 
 
+@add_issue = ->
+  return if ($(".add_issue")[0])
+  $(".backlog ul.issues").append('<li><input id="add_issue" name="issue[name]"/></li>')
+  $("#add_issue").focus()
+  $("#add_issue").keyup(create_issue)
+
+@create_issue = (e)->
+  if e.keyCode == 13
+    issue_name = $("#add_issue").val()
+    product_id = $("#product_id").val()
+    $.ajax({
+      type: "POST",
+      url: "/products/" + product_id + "/issues",
+      data: {issue: {name: issue_name}},
+      success: show_newly_issue
+      })
+  
+@show_newly_issue = (id)->
+  notify("New story added")
+  $.get("/issues/"+id+"",(html)-> 
+      container = $("#add_issue").parents("ul")
+      $("#add_issue").parent("li").remove()
+      container.append(html)
+      )

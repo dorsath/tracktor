@@ -6,3 +6,13 @@ $(document).ready ->
   set_issue_height()
   $(window).resize(set_issue_height)
   sort_issues()
+
+  $("body").keyup(handle_shortcuts)
+
+
+handle_shortcuts = (e) ->
+  switch e.keyCode
+    when 65 then add_issue()
+
+
+

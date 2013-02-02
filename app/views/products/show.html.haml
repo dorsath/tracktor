@@ -1,15 +1,9 @@
 %h2==#{@product.name}
+%input#product_id{type: "hidden", value: @product.id}
 
 - @product.active_sprints.each do |sprint|
-  .sprint{id: "sprint_#{sprint.id}"}
+  .sprint{id: "sprint_#{sprint.id}", class: sprint.is_backlog? ? "backlog" : ""}
     =sprint.name
     %ul.issues
       - sprint.issues.each do |issue|
-        %li{id: "issue_#{issue.id}"}
-          =issue.name
-          - if current_user.current_issue == issue
-            = form_for issue, url: stop_issue_path(issue) do |f|
-              =f.submit "stop"
-          - else
-            = form_for issue, url: continue_issue_path(issue) do |f|
-              =f.submit "continue"
+        =render partial: "issues/item", locals: {issue: issue}

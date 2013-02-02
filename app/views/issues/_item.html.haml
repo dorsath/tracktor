@@ -1,0 +1,9 @@
+%li{id: "issue_#{issue.id}"}
+  =issue.name
+  - if current_user.current_issue == issue
+    = form_for issue, url: stop_issue_path(issue) do |f|
+      =f.submit "stop"
+  - else
+    = form_for issue, url: continue_issue_path(issue) do |f|
+      =f.submit "continue"
+
