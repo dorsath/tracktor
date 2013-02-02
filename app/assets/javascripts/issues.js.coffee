@@ -30,21 +30,28 @@
 
 
 @add_issue = ->
-  return if ($(".add_issue")[0])
+  return if ($("#add_issue")[0])
   $(".backlog ul.issues").append('<li><input id="add_issue" name="issue[name]"/></li>')
   $("#add_issue").focus()
-  $("#add_issue").keyup(create_issue)
+  $("#add_issue").keyup((e)->
+      switch(e.keyCode)
+        when 13 then create_issue()
+        when 27 then cancel_create_issue()
+      )
 
-@create_issue = (e)->
-  if e.keyCode == 13
-    issue_name = $("#add_issue").val()
-    product_id = $("#product_id").val()
-    $.ajax({
-      type: "POST",
-      url: "/products/" + product_id + "/issues",
-      data: {issue: {name: issue_name}},
-      success: show_newly_issue
-      })
+@cancel_create_issue = ->
+  $("#add_issue").parent("li").remove()
+  
+
+@create_issue = ->
+  issue_name = $("#add_issue").val()
+  product_id = $("#product_id").val()
+  $.ajax({
+    type: "POST",
+    url: "/products/" + product_id + "/issues",
+    data: {issue: {name: issue_name}},
+    success: show_newly_issue
+    })
   
 @show_newly_issue = (id)->
   notify("New story added")

@@ -1,6 +1,6 @@
 %h2==#{@product.name}
 %input#product_id{type: "hidden", value: @product.id}
-
+#add_issue_button Add issue
 - @product.active_sprints.each do |sprint|
   .sprint{id: "sprint_#{sprint.id}", class: sprint.is_backlog? ? "backlog" : ""}
     =sprint.name
