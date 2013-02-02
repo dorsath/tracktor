@@ -4,4 +4,19 @@
 
 ul.issues {
   height: 100px;
+  padding: 5px;
+  margin: 0px;
+
+  li {
+    list-style: none;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    
+    form {
+      float: right;
+      display: inline;
+    }
+  }
 }
+

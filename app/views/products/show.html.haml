@@ -1,7 +1,7 @@
 %h2==#{@product.name}
 
 - @product.active_sprints.each do |sprint|
-  %div.sprint{id: "sprint_#{sprint.id}"}
+  .sprint{id: "sprint_#{sprint.id}"}
     =sprint.name
     %ul.issues
       - sprint.issues.each do |issue|
