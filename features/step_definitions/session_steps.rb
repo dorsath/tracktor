@@ -6,7 +6,7 @@ end
 
 When /^I continue the issue$/ do
   visit product_path(@product)
-  within ".issue_#{@issue.id}" do
+  within "#issue_#{@issue.id}" do
     click_button "continue"
   end
 end
@@ -18,20 +18,20 @@ end
 
 
 And /^the continue button should now be a stop button$/ do
-  within ".issue_#{@issue.id}" do
+  within "#issue_#{@issue.id}" do
     page.should have_button("stop")
   end
 end
 
 Given /^an active issue$/ do
   visit product_path(@product)
-  within ".issue_#{@issue.id}" do
+  within "#issue_#{@issue.id}" do
     click_button "continue"
   end
 end
 
 When /^I stop the issue$/ do
-  within ".issue_#{@issue.id}" do
+  within "#issue_#{@issue.id}" do
     click_button "stop"
   end
 end
@@ -42,7 +42,7 @@ Then /^I should no longer have an active session$/ do
 end
 
 Then /^the stop button should now be a continue button$/ do
-  within ".issue_#{@issue.id}" do
+  within "#issue_#{@issue.id}" do
     page.should have_button("continue")
   end
 end

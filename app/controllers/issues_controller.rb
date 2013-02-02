@@ -17,4 +17,14 @@ class IssuesController < ApplicationController
 
     redirect_to :back
   end
+
+  def move
+    issue = Issue.find(params[:id])
+    sprint = Sprint.find(params[:sprint_id])
+    if issue && sprint
+      issue.update_attribute(:sprint, sprint)
+    end
+
+    render text: (issue && sprint)
+  end
 end

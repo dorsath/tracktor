@@ -6,6 +6,7 @@ Tracktor::Application.routes.draw do
     member do
       put :continue
       put :stop
+      post :move
     end
   end
 
