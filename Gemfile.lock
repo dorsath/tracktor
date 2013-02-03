@@ -127,6 +127,8 @@ GEM
     rspec-mocks (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
+    rspec-rails (2.0.1)
+      rspec (~> 2.0.0)
     rubyzip (0.9.9)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -173,7 +175,7 @@ DEPENDENCIES
   haml
   jquery-rails
   rails (= 3.2.11)
-  rspec
+  rspec-rails
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)

@@ -42,4 +42,15 @@ class IssuesController < ApplicationController
 
     render layout: false
   end
+
+  def start
+    issue = Issue.find(params[:id])
+    if issue
+      issue.status = :in_progress
+      issue.start_by(current_user)
+    end
+
+    redirect_to :back
+  end
+
 end

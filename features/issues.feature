@@ -24,3 +24,11 @@ Feature: Issues
     When I fill in a name for the issue
     And I press enter
     Then there should be a new issue in the backlog
+
+  Scenario: Get started on an issue by pressing the start button
+    Given it has an active sprint
+    And I have an issue
+    And I take a look at the product
+    When I start the issue by clicking on start
+    Then the issue should be in progress
+    And the time should be running for me on that issue

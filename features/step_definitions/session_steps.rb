@@ -1,7 +1,7 @@
 Given /^I have a product, sprint and issue$/ do
   @product = FactoryGirl.create(:product)
   @sprint  = FactoryGirl.create(:sprint,product: @product)
-  @issue   = FactoryGirl.create(:issue ,sprint:  @sprint)
+  @issue   = FactoryGirl.create(:issue ,sprint:  @sprint, status: :in_progress)
 end
 
 When /^I continue the issue$/ do

@@ -1,9 +1,11 @@
 %li{id: "issue_#{issue.id}"}
   =issue.name
+  .status=issue.status.to_s
   - if current_user.current_issue == issue
     = form_for issue, url: stop_issue_path(issue) do |f|
       =f.submit "stop"
-  - else
+  - elsif issue.status != :not_started
     = form_for issue, url: continue_issue_path(issue) do |f|
       =f.submit "continue"
+  =render partial: "issues/#{issue.status.to_s}", locals: {issue: issue}
 

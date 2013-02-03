@@ -7,7 +7,7 @@ Feature: Session
   Background:
     Given I am logged in
 
-  Scenario: Start session on a issue by clicking continue
+  Scenario: Start session on an in progress issue by clicking continue
     Given I have a product, sprint and issue
     When I continue the issue
     Then I should have an active session

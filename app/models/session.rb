@@ -20,4 +20,8 @@ class Session < ActiveRecord::Base
     end
   end
 
+  def in_progress?
+    till.nil?
+  end
+
 end

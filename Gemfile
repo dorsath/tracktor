@@ -27,7 +27,7 @@ gem 'jquery-rails'
 group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'rspec'
+  gem 'rspec-rails'
   gem "factory_girl"
   gem 'ffaker'
 end

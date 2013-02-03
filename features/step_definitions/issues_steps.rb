@@ -55,3 +55,18 @@ Then /^there should be a new issue in the backlog$/ do
   @product.backlog.issues.count.should == 1
   @product.backlog.issues.last.name.should == @issue_name
 end
+
+When /^I start the issue by clicking on start$/ do
+  within "#issue_#{@issue.id}" do
+    click_button "start"
+  end
+end
+
+Then /^the issue should be in progress$/ do
+  @issue.reload.status.should == :in_progress
+end
+
+Then /^the time should be running for me on that issue$/ do
+  user.reload.current_session.should == @issue.sessions.last
+  user.current_session.should be_in_progress
+end
