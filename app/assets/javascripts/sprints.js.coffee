@@ -31,6 +31,7 @@
       $("#add_sprint_input").parent("div.sprint").remove()
       container.append(html)
       set_sprint_height()
+      sort_issues()
       )
 
 
