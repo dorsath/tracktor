@@ -47,7 +47,7 @@ When /^I fill in a name for the issue$/ do
 end
 
 When /^I press enter$/ do
-  page.driver.execute_script("return document.getElementById('add_issue')").send_keys(:enter)
+  page.driver.execute_script("return document.activeElement;").send_keys(:enter)
   sleep(0.5)
 end
 

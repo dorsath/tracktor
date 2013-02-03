@@ -1,0 +1,6 @@
+.sprint{id: "sprint_#{sprint.id}", class: sprint.is_backlog? ? "backlog" : ""}
+  =sprint.name
+  %ul.issues
+    - sprint.issues.each do |issue|
+      =render partial: "issues/item", locals: {issue: issue}
+

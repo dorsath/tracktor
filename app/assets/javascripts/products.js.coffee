@@ -3,14 +3,17 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-  set_issue_height()
-  $(window).resize(set_issue_height)
+  set_sprint_height()
+  $(window).resize(set_sprint_height)
   sort_issues()
   $("#add_issue_button").on("click", add_issue)
+  $("#add_sprint_button").on("click", add_sprint)
 
   $("body").keyup(handle_shortcuts)
 
 
+@product_id = ->
+  $("#product_id").val()
 handle_shortcuts = (e) ->
   switch e.keyCode
     when 65 then add_issue()

@@ -2,9 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-@set_issue_height = ->
-  issue_height = $(window).height() - 150;
-  $(".issues").css("height", issue_height)
+@set_sprint_height = ->
+  sprint_height = $(window).height() - 150;
+  issues_height = sprint_height - 25;
+  $(".sprint").css("height", sprint_height)
+  $(".issues").css("height", issues_height)
 
 @sort_issues = ->
   $( ".issues" ).sortable({
@@ -28,9 +30,11 @@
       
   }).disableSelection();
 
+@busy = ->
+  ($("#add_issue")[0] || $("#add_sprint_input")[0])
 
 @add_issue = ->
-  return if ($("#add_issue")[0])
+  return if busy()
   $(".backlog ul.issues").append('<li><input id="add_issue" name="issue[name]"/></li>')
   $("#add_issue").focus()
   $("#add_issue").keyup((e)->
@@ -45,10 +49,9 @@
 
 @create_issue = ->
   issue_name = $("#add_issue").val()
-  product_id = $("#product_id").val()
   $.ajax({
     type: "POST",
-    url: "/products/" + product_id + "/issues",
+    url: "/products/" + product_id() + "/issues",
     data: {issue: {name: issue_name}},
     success: show_newly_issue
     })
