@@ -32,3 +32,14 @@ Feature: Issues
     When I start the issue by clicking on start
     Then the issue should be in progress
     And the time should be running for me on that issue
+
+  @javascript
+  Scenario: Rename an issue by double clicking its name
+    Given it has an active sprint
+    And I have an issue
+    And I take a look at the product
+    When I double click an issue
+    Then it should change to an input
+    When I change the name
+    And I press enter
+    Then the issue should be renamed

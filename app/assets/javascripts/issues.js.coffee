@@ -31,7 +31,7 @@
   }).disableSelection();
 
 @busy = ->
-  ($("#add_issue")[0] || $("#add_sprint_input")[0])
+  $(':focus')[0]
 
 @add_issue = ->
   return if busy()
@@ -63,3 +63,26 @@
       $("#add_issue").parent("li").remove()
       container.append(html)
       )
+
+@change_issue_name = ->
+  issue_id = $(this).parent()[0].id.replace("issue_","")
+  $(this).html('<input id="change_issue_name" name="issue[name]" value="'+$(this).html()+'"/>')
+  input = $(this).find("input#change_issue_name")
+  input.focus()
+  input.keyup((e)->
+      switch(e.keyCode)
+        when 13 then save_issue_name(issue_id, input.val())
+      )
+
+@save_issue_name = (id, issue_name)->
+  $.ajax({
+    type: "PUT",
+    url: "/products/" + product_id() + "/issues/"+ id,
+    data: {issue: {name: issue_name}},
+    success: show_newly_issue_name()
+    })
+
+@show_newly_issue_name = ->
+  input = $("input#change_issue_name")
+  input.parent().html(input.val())
+  notify("Issue name updated")

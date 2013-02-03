@@ -1,5 +1,5 @@
 %li{id: "issue_#{issue.id}"}
-  =issue.name
+  .name=issue.name
   .status=issue.status.to_s
   - if current_user.current_issue == issue
     = form_for issue, url: stop_issue_path(issue) do |f|

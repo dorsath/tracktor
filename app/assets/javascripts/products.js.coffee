@@ -8,6 +8,7 @@ $(document).ready ->
   sort_issues()
   $("#add_issue_button").on("click", add_issue)
   $("#add_sprint_button").on("click", add_sprint)
+  $(".issues .name").on("dblclick", change_issue_name)
 
   $("body").keyup(handle_shortcuts)
 

@@ -6,6 +6,9 @@ ul.issues {
   height: 100px;
   padding: 5px;
   margin: 0px;
+  .name {
+    display: inline;
+  }
 
   li {
     list-style: none;

@@ -70,3 +70,26 @@ Then /^the time should be running for me on that issue$/ do
   user.reload.current_session.should == @issue.sessions.last
   user.current_session.should be_in_progress
 end
+
+When /^I double click an issue$/ do
+  page.driver.execute_script('$("#issue_'+@issue.id.to_s+' .name").trigger("dblclick")')
+end
+
+Then /^it should change to an input$/ do
+  within "#issue_#{@issue.id}" do
+    page.should have_field("issue[name]")
+  end
+end
+
+When /^I change the name$/ do
+  within "#issue_#{@issue.id}" do
+    fill_in("issue[name]", with: "New issue name")
+  end
+end
+
+Then /^the issue should be renamed$/ do
+  @issue.reload.name.should == "New issue name"
+  within "#issue_#{@issue.id} .name" do
+    page.should have_content("New issue name")
+  end
+end

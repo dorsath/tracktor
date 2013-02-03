@@ -28,6 +28,16 @@ class IssuesController < ApplicationController
     render text: (issue && sprint)
   end
 
+  def update
+    issue = Issue.find(params[:id])
+    if issue
+      success = issue.update_attributes(params[:issue])
+    end
+
+    render text: success ? success : false
+  end
+
+
   def create
     product = Product.find(params[:product_id])
     if product
