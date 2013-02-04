@@ -37,6 +37,9 @@ group :test do
   gem 'autotest'
 end
 
+group :production do
+  gem 'activerecord-sqlite3-adapter'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
