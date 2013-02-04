@@ -55,6 +55,7 @@ Feature: Issues
     And I take a look at the product
     When I accept the issue by clicking on accept
     Then the issue should be accepted
+    And the continue button should be gone
 
   Scenario: Start an issue that has been rejected
     Given it has an active sprint

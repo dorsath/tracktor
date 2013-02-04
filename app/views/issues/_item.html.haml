@@ -4,7 +4,7 @@
   - if current_user.current_issue == issue
     = form_for issue, url: stop_issue_path(issue) do |f|
       =f.submit "stop"
-  - elsif issue.status != :not_started
+  - elsif [:not_started, :accepted].exclude?(issue.status)
     = form_for issue, url: continue_issue_path(issue) do |f|
       =f.submit "continue"
   =render partial: "issues/#{issue.status.to_s}", locals: {issue: issue}

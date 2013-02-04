@@ -158,4 +158,10 @@ When /^I reopen the issue by clicking on reopen$/ do
   end
 end
 
+And /^the continue button should be gone$/ do
+  within "#issue_#{@issue.id}" do
+    page.should_not have_button("continue")
+  end
+end
+
 
