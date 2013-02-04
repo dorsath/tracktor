@@ -24,4 +24,7 @@ class Session < ActiveRecord::Base
     till.nil?
   end
 
+  def time_spent
+    till.to_i - from.to_i
+  end
 end

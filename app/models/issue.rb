@@ -17,4 +17,12 @@ class Issue < ActiveRecord::Base
     session = sessions.create(user: user)
     user.update_attribute(:current_session, session)
   end
+
+  def total_time_spent_on
+    sessions.map(&:time_spent).inject(:+) || 0
+  end
+
+  def time_spent_by(user)
+    sessions.where(user_id: user.id).map(&:time_spent).inject(:+) || 0
+  end
 end

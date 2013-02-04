@@ -6,6 +6,9 @@ Tracktor::Application.routes.draw do
     resources :sprints
   end
 
+  
+  resource :dashboard
+
   resources :issues do
     member do
       put :continue
@@ -20,5 +23,5 @@ Tracktor::Application.routes.draw do
   end
   resources :sprints
 
-  root :to => "dashboard#index"
+  root :to => "dashboards#show"
 end

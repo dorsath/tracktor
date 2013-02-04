@@ -1,0 +1,5 @@
+.projects
+  - @projects.each do |project|
+    .project_name=project.name
+    .total_time_spent_on==Total time spent: #{format_time_to_hours project.total_time_spent_on}
+    .my_time_spent_on==My time spent: #{format_time_to_hours project.time_spent_by(current_user)}

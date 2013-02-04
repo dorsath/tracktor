@@ -15,4 +15,12 @@ class Project < ActiveRecord::Base
   def backlog
     sprints.first
   end
+
+  def total_time_spent_on
+    sprints.map(&:total_time_spent_on).inject(:+) || 0
+  end
+
+  def time_spent_by(user)
+    sprints.map { |s| s.time_spent_by(user) }.inject(:+) || 0
+  end
 end
