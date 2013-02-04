@@ -13,3 +13,8 @@ Feature: Dashboard
     And I should see the total time spent on it
     And I should see the total time I spent on it
 
+  Scenario: Create a new project
+    Given I visit my dashboard
+    When I fill in a new project name
+    And I press create
+    Then I should have a project

@@ -44,3 +44,19 @@ Then /^I should see the total time I spent on it$/ do
     page.should have_content((@project.time_spent_by(user) / 3600).round)
   end
 end
+
+When /^I fill in a new project name$/ do
+  within "#new_project" do
+    fill_in("project[name]", with: "New project")
+  end
+end
+
+When /^I press create$/ do
+  within "#new_project" do
+    click_button("create")
+  end
+end
+
+Then /^I should have a project$/ do
+  Project.last.name.should == "New project"
+end

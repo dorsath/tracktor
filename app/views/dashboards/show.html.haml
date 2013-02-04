@@ -1,3 +1,8 @@
+=form_for Project.new do |f|
+  Create new project:
+  =f.text_field :name
+  =f.submit "create"
+
 .projects
   - @projects.each do |project|
     .project_name=project.name
