@@ -116,3 +116,29 @@ end
 Then /^I should no longer be working on that issue$/ do
   user.reload.current_issue.should_not eql(@issue)
 end
+
+Given /^I have an issue that's on feedback$/ do
+  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue.status = :feedback
+end
+
+When /^I reject the issue by clicking on reject$/ do
+  within "#issue_#{@issue.id}" do
+    click_button "reject"
+  end
+end
+
+Then /^the issue should be rejected$/ do
+  @issue.reload.status.should == :rejected
+end
+
+When /^I accept the issue by clicking on accept$/ do
+  within "#issue_#{@issue.id}" do
+    click_button "accept"
+  end
+end
+
+Then /^the issue should be accepted$/ do
+  @issue.reload.status.should == :accepted
+end
+

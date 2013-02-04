@@ -4,6 +4,7 @@ class Issue < ActiveRecord::Base
   has_many :sessions
 
   STATUS = [:not_started, :in_progress, :feedback, :rejected, :accepted]
+
   def status
     STATUS[status_id]
   end

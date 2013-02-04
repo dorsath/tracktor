@@ -73,4 +73,22 @@ class IssuesController < ApplicationController
     redirect_to :back
   end
 
+  def reject
+    issue = Issue.find(params[:id])
+    if issue
+      issue.status = :rejected
+    end
+
+    redirect_to :back
+  end
+
+  def accept
+    issue = Issue.find(params[:id])
+    if issue
+      issue.status = :accepted
+    end
+
+    redirect_to :back
+  end
+
 end
