@@ -1,12 +1,12 @@
 class SprintsController < ApplicationController
   def create
-    product = Product.find(params[:product_id])
-    if product
+    project = Project.find(params[:project_id])
+    if project
       params[:sprint][:active] = true
-      sprint = product.sprints.create(params[:sprint])
+      sprint = project.sprints.create(params[:sprint])
     end
 
-    render text: (product && sprint) ? sprint.id : false
+    render text: (project && sprint) ? sprint.id : false
   end
 
   def show

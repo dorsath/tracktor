@@ -13,8 +13,8 @@ $(document).ready ->
   $("body").keyup(handle_shortcuts)
 
 
-@product_id = ->
-  $("#product_id").val()
+@project_id = ->
+  $("#project_id").val()
 handle_shortcuts = (e) ->
   switch e.keyCode
     when 65 then add_issue()

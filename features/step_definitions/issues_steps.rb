@@ -1,5 +1,5 @@
 And /^I have an active sprint with a couple issues$/ do
-  @sprint = FactoryGirl.create(:sprint, product: @product, active: true)
+  @sprint = FactoryGirl.create(:sprint, project: @project, active: true)
   @issues = 3.times.map do
     FactoryGirl.create(:issue, sprint: @sprint)
   end
@@ -14,7 +14,7 @@ Then /^I should see the issues within the sprint$/ do
 end
 
 Given /^I have an issue$/ do
-  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue = FactoryGirl.create(:issue, sprint: @project.backlog)
 end
 
 When /^I drag the issue to the sprint$/ do
@@ -52,8 +52,8 @@ When /^I press enter$/ do
 end
 
 Then /^there should be a new issue in the backlog$/ do
-  @product.backlog.issues.count.should == 1
-  @product.backlog.issues.last.name.should == @issue_name
+  @project.backlog.issues.count.should == 1
+  @project.backlog.issues.last.name.should == @issue_name
 end
 
 When /^I start the issue by clicking on start$/ do
@@ -95,7 +95,7 @@ Then /^the issue should be renamed$/ do
 end
 
 Given /^I have an issue that's been started$/ do
-  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue = FactoryGirl.create(:issue, sprint: @project.backlog)
   @issue.status = :in_progress
 end
 
@@ -118,7 +118,7 @@ Then /^I should no longer be working on that issue$/ do
 end
 
 Given /^I have an issue that's on feedback$/ do
-  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue = FactoryGirl.create(:issue, sprint: @project.backlog)
   @issue.status = :feedback
 end
 
@@ -143,12 +143,12 @@ Then /^the issue should be accepted$/ do
 end
 
 Given /^I have an issue that's been rejected$/ do
-  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue = FactoryGirl.create(:issue, sprint: @project.backlog)
   @issue.status = :rejected
 end
 
 Given /^I have an issue that's been accepted$/ do
-  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue = FactoryGirl.create(:issue, sprint: @project.backlog)
   @issue.status = :accepted
 end
 

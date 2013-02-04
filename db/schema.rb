@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130203120527) do
     t.integer  "status_id",  :default => 0
   end
 
-  create_table "products", :force => true do |t|
+  create_table "projects", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130203120527) do
 
   create_table "sprints", :force => true do |t|
     t.string   "name"
-    t.integer  "product_id"
+    t.integer  "project_id"
     t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

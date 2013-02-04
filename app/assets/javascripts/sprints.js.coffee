@@ -18,7 +18,7 @@
   sprint_name = $("#add_sprint_input").val()
   $.ajax({
     type: "POST",
-    url: "/products/" + product_id() + "/sprints",
+    url: "/projects/" + project_id() + "/sprints",
     data: {sprint: {name: sprint_name}},
     success: show_newly_sprint
     })

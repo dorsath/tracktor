@@ -1,11 +1,11 @@
-Given /^I have a product, sprint and issue$/ do
-  @product = FactoryGirl.create(:product)
-  @sprint  = FactoryGirl.create(:sprint,product: @product)
+Given /^I have a project, sprint and issue$/ do
+  @project = FactoryGirl.create(:project)
+  @sprint  = FactoryGirl.create(:sprint,project: @project)
   @issue   = FactoryGirl.create(:issue ,sprint:  @sprint, status: :in_progress)
 end
 
 When /^I continue the issue$/ do
-  visit product_path(@product)
+  visit project_path(@project)
   within "#issue_#{@issue.id}" do
     click_button "continue"
   end
@@ -24,7 +24,7 @@ And /^the continue button should now be a stop button$/ do
 end
 
 Given /^an active issue$/ do
-  visit product_path(@product)
+  visit project_path(@project)
   within "#issue_#{@issue.id}" do
     click_button "continue"
   end

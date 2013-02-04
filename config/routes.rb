@@ -1,7 +1,7 @@
 Tracktor::Application.routes.draw do
   devise_for :users
 
-  resources :products do
+  resources :projects do
     resources :issues
     resources :sprints
   end

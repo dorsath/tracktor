@@ -1,7 +1,7 @@
-%h2==#{@product.name}
-%input#product_id{type: "hidden", value: @product.id}
+%h2==#{@project.name}
+%input#project_id{type: "hidden", value: @project.id}
 #add_issue_button.button Add issue
 #add_sprint_button.button Add sprint
 .sprints
-  - @product.active_sprints.each do |sprint|
+  - @project.active_sprints.each do |sprint|
     =render partial: "sprints/item", locals: {sprint: sprint}

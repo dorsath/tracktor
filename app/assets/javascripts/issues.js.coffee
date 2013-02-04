@@ -51,7 +51,7 @@
   issue_name = $("#add_issue").val()
   $.ajax({
     type: "POST",
-    url: "/products/" + product_id() + "/issues",
+    url: "/projects/" + project_id() + "/issues",
     data: {issue: {name: issue_name}},
     success: show_newly_issue
     })
@@ -77,7 +77,7 @@
 @save_issue_name = (id, issue_name)->
   $.ajax({
     type: "PUT",
-    url: "/products/" + product_id() + "/issues/"+ id,
+    url: "/projects/" + project_id() + "/issues/"+ id,
     data: {issue: {name: issue_name}},
     success: show_newly_issue_name()
     })

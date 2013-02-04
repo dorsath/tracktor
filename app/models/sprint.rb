@@ -1,10 +1,10 @@
 class Sprint < ActiveRecord::Base
   attr_accessible :name, :active
 
-  belongs_to :product
+  belongs_to :project
   has_many :issues
 
   def is_backlog?
-    product.backlog == self
+    project.backlog == self
   end
 end

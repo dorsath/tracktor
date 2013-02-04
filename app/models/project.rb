@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+class Project < ActiveRecord::Base
   attr_accessible :name
 
   has_many :sprints

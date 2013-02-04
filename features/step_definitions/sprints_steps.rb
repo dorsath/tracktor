@@ -1,17 +1,17 @@
-Given /^I have a product$/ do
-  @product = FactoryGirl.create(:product)
+Given /^I have a project$/ do
+  @project = FactoryGirl.create(:project)
 end
 
 Given /^it has an active sprint$/ do
-  @active_sprint = FactoryGirl.create(:sprint, product: @product, active: true)
+  @active_sprint = FactoryGirl.create(:sprint, project: @project, active: true)
 end
 
 Given /^an inactive sprint$/ do
-  @inactive_sprint = FactoryGirl.create(:sprint, product: @product, active: false)
+  @inactive_sprint = FactoryGirl.create(:sprint, project: @project, active: false)
 end
 
-When /^I take a look at the product$/ do
-  visit product_path(@product)
+When /^I take a look at the project$/ do
+  visit project_path(@project)
 end
 
 Then /^I should only see the active sprint$/ do

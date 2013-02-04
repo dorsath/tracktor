@@ -39,12 +39,12 @@ class IssuesController < ApplicationController
 
 
   def create
-    product = Product.find(params[:product_id])
-    if product
-      issue = product.backlog.issues.create(params[:issue])
+    project = Project.find(params[:project_id])
+    if project
+      issue = project.backlog.issues.create(params[:issue])
     end
 
-    render text: (product && issue) ? issue.id : false
+    render text: (project && issue) ? issue.id : false
   end
 
   def show
