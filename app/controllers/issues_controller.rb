@@ -63,4 +63,14 @@ class IssuesController < ApplicationController
     redirect_to :back
   end
 
+  def complete
+    issue = Issue.find(params[:id])
+    if issue
+      issue.status = :feedback
+      current_user.current_session.stop if current_user.current_issue == issue
+    end
+
+    redirect_to :back
+  end
+
 end

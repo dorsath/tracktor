@@ -93,3 +93,26 @@ Then /^the issue should be renamed$/ do
     page.should have_content("New issue name")
   end
 end
+
+Given /^I have an issue that's been started$/ do
+  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue.status = :in_progress
+end
+
+Given /^I am currently working on that issue$/ do
+  @issue.start_by(user)
+end
+
+When /^I put the issue in feedback by clicking on complete$/ do
+  within "#issue_#{@issue.id}" do
+    click_button "complete"
+  end
+end
+
+Then /^the issue should be in feedback$/ do
+  @issue.reload.status.should == :feedback
+end
+
+Then /^I should no longer be working on that issue$/ do
+  user.reload.current_issue.should_not eql(@issue)
+end

@@ -11,6 +11,7 @@ Tracktor::Application.routes.draw do
       put :continue
       put :stop
       put :start
+      put :complete
       post :move
     end
   end

@@ -33,6 +33,16 @@ Feature: Issues
     Then the issue should be in progress
     And the time should be running for me on that issue
 
+  @wip
+  Scenario: Put an issue into feedback when it's started and done
+    Given it has an active sprint
+    And I have an issue that's been started
+    And I am currently working on that issue
+    And I take a look at the product
+    When I put the issue in feedback by clicking on complete
+    Then the issue should be in feedback
+    And I should no longer be working on that issue
+
   @javascript
   Scenario: Rename an issue by double clicking its name
     Given it has an active sprint
