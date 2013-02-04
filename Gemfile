@@ -38,7 +38,7 @@ group :test do
 end
 
 group :production do
-  gem 'activerecord-sqlite3-adapter'
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
