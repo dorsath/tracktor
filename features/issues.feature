@@ -56,6 +56,14 @@ Feature: Issues
     When I accept the issue by clicking on accept
     Then the issue should be accepted
 
+  Scenario: Start an issue that has been rejected
+    Given it has an active sprint
+    And I have an issue that's been rejected
+    And I take a look at the product
+    When I start the issue by clicking on start
+    Then the issue should be in progress
+    And the time should be running for me on that issue
+
   @javascript
   Scenario: Rename an issue by double clicking its name
     Given it has an active sprint

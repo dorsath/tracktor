@@ -142,3 +142,8 @@ Then /^the issue should be accepted$/ do
   @issue.reload.status.should == :accepted
 end
 
+Given /^I have an issue that's been rejected$/ do
+  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue.status = :rejected
+end
+
