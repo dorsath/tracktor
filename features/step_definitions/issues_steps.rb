@@ -147,3 +147,15 @@ Given /^I have an issue that's been rejected$/ do
   @issue.status = :rejected
 end
 
+Given /^I have an issue that's been accepted$/ do
+  @issue = FactoryGirl.create(:issue, sprint: @product.backlog)
+  @issue.status = :accepted
+end
+
+When /^I reopen the issue by clicking on reopen$/ do
+  within "#issue_#{@issue.id}" do
+    click_button "reopen"
+  end
+end
+
+

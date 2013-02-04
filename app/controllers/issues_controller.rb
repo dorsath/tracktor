@@ -91,4 +91,14 @@ class IssuesController < ApplicationController
     redirect_to :back
   end
 
+  def reopen
+    issue = Issue.find(params[:id])
+    if issue
+      issue.status = :in_progress
+      issue.start_by(current_user)
+    end
+
+    redirect_to :back
+  end
+
 end

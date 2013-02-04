@@ -64,6 +64,14 @@ Feature: Issues
     Then the issue should be in progress
     And the time should be running for me on that issue
 
+  Scenario: Reopen an issue that has been accepted
+    Given it has an active sprint
+    And I have an issue that's been accepted
+    And I take a look at the product
+    When I reopen the issue by clicking on reopen
+    Then the issue should be in progress
+    And the time should be running for me on that issue
+
   @javascript
   Scenario: Rename an issue by double clicking its name
     Given it has an active sprint
