@@ -16,6 +16,10 @@ ul.issues {
     margin-bottom: 2px;
     background-color: white;
     overflow: hidden;
+
+    &.extensive {
+      height: 100px;
+    }
     
 
     .name {

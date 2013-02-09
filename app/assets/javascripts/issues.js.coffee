@@ -92,3 +92,11 @@
   input = $("input#change_issue_name")
   input.parent().html(input.val())
   notify("Issue name updated")
+
+@add_toggle_to_issues = ->
+  $(".issue").bind("click", toggle_display_mode)
+
+@toggle_display_mode = (e) ->
+  $(this).toggleClass('extensive')
+
+

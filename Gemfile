@@ -35,6 +35,7 @@ group :test do
   gem "factory_girl"
   gem 'ffaker'
   gem 'autotest'
+  gem 'launchy'
 end
 
 group :production do
