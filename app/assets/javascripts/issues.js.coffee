@@ -72,7 +72,9 @@
   input.keyup((e)->
       switch(e.keyCode)
         when 13 then save_issue_name(issue_id, input.val())
+        when 27 then cancel_change_issue_name(input)
       )
+  input.bind('focusout',-> cancel_change_issue_name(input) )
 
 @save_issue_name = (id, issue_name)->
   $.ajax({
@@ -81,6 +83,10 @@
     data: {issue: {name: issue_name}},
     success: show_newly_issue_name()
     })
+
+@cancel_change_issue_name = (input)->
+  input.parent('div.name').html(input.val())
+
 
 @show_newly_issue_name = ->
   input = $("input#change_issue_name")
