@@ -9,9 +9,12 @@
 <body>
 
 <%- if current_user %>
-  <div id="user_session">
-    <span class="name"><%=current_user.name%></span>
-  </div>
+  <ul id="user_session">
+    <li class="name"><%=current_user.name%></li>
+    <%- if current_user.current_issue %>
+      <li class="currently_working_on"><%=current_user.current_issue.name%></li>
+    <%- end %>
+  </ul>
 <%- end %>
 
 <%= yield %>
