@@ -2,6 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+@add_issue_bindings = ->
+  sort_issues()
+  add_toggle_to_issues()
+  $(".issues .name").on("dblclick", change_issue_name)
+  
+
 @set_sprint_height = ->
   sprint_height = $(window).height() - 150;
   issues_height = sprint_height - 25;
@@ -62,6 +68,7 @@
       container = $("#add_issue").parents("ul")
       $("#add_issue").parent("li").remove()
       container.append(html)
+      add_issue_bindings()
       )
 
 @change_issue_name = ->

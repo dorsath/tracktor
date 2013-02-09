@@ -5,11 +5,10 @@
 $(document).ready ->
   set_sprint_height()
   $(window).resize(set_sprint_height)
-  sort_issues()
   $("#add_issue_button").on("click", add_issue)
   $("#add_sprint_button").on("click", add_sprint)
-  $(".issues .name").on("dblclick", change_issue_name)
-  add_toggle_to_issues()
+
+  add_issue_bindings()
 
   $("body").keyup(handle_shortcuts)
 
