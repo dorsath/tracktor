@@ -6,36 +6,41 @@ ul.issues {
   height: 100px;
   padding: 5px;
   margin: 0px;
-  .name {
-    display: inline;
-  }
+
 
   li {
     list-style: none;
     border: 1px solid black;
     border-radius: 4px;
     padding: 4px;
-    height: 20px;
     margin-bottom: 2px;
     background-color: white;
+    overflow: hidden;
     
-    form {
+
+    .name {
+      display: inline;
+      float: left;
+      width: 150px;
+    }
+    .actions {
+      * {
       float: right;
       display: inline;
-    }
+      }
 
-    #add_issue {
-      width: 273px;
-    }
-    
-    .status {
-      float: right;
-      border: 1px solid black;
-      border-radius: 4px;
-      text-align: center;
-      width: 70px;
-      padding: 2px;
-      font-size: 11px;
+      #add_issue {
+        width: 273px;
+      }
+      
+      .status {
+        border: 1px solid black;
+        border-radius: 4px;
+        text-align: center;
+        width: 70px;
+        padding: 2px;
+        font-size: 11px;
+      }
     }
   }
 }
