@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title Tracktor
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    - if current_user
+      %table#user_session
+        %tr
+          %td Name:
+          %td.name=current_user.name
+        %tr
+          %td Active issue:
+          - if current_user.current_session
+            %td.currently_working_on=current_user.current_issue.name
+          - else
+            %td :nothing
+    =yield

@@ -16,6 +16,7 @@ ul.issues {
     margin-bottom: 2px;
     background-color: white;
     overflow: hidden;
+    max-height: 33px;
 
     &.extensive {
       height: 100px;
