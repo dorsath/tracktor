@@ -41,6 +41,7 @@ class IssuesController < ApplicationController
   def create
     project = Project.find(params[:project_id])
     if project
+      params[:issue][:created_by] = current_user
       issue = project.backlog.issues.create(params[:issue])
     end
 

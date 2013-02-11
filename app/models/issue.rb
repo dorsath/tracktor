@@ -1,7 +1,11 @@
 class Issue < ActiveRecord::Base
-  attr_accessible :name, :sprint, :user
+  attr_accessible :name, :sprint, :user, :created_by
   belongs_to :sprint
   has_many :sessions
+  belongs_to :created_by, class_name: "User"
+
+  validates_presence_of :created_by
+
 
   STATUS = [:not_started, :in_progress, :feedback, :rejected, :accepted]
 

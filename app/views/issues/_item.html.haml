@@ -1,8 +1,8 @@
 %li.issue{id: "issue_#{issue.id}"}
 
   .name=issue.name
+  .status=issue.status.to_s
   .actions
-    .status=issue.status.to_s
     - if current_user.current_issue == issue
       = form_for issue, url: stop_issue_path(issue) do |f|
         =f.submit "stop"
@@ -11,3 +11,14 @@
         =f.submit "continue"
     =render partial: "issues/#{issue.status.to_s}", locals: {issue: issue}
 
+  %ul.extensive_info
+    %li 
+      Created by: 
+      %span.created_by=issue.created_by.name
+    %li
+      Created at:
+      %span.created_at=issue.created_at
+    %li
+      Time spent:
+      %span.time_spent=issue.total_time_spent_on
+      hours

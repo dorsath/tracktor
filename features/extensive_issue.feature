@@ -5,12 +5,19 @@ Feature: Extensive Issue
 
   Background:
     Given I am logged in
+    And I have a project, sprint and issue
+    And I take a look at the project
 
   @javascript
   Scenario: Toggle Issue extensiveness
-    Given I have a project, sprint and issue
-    And I take a look at the project
     When I click once on the issue
     Then it should be in extensive mode
     When I click on it again
     Then it should be in preview mode
+
+  @javascript @wip
+  Scenario: Show issue info when in extensive mode
+    When I click once on the issue
+    Then I should see the user who created it
+    And I should see when it was created
+    And I should see how much time there was spent on it

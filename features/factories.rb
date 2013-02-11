@@ -10,6 +10,7 @@ FactoryGirl.define do
 
   factory :issue do
     name {Faker::Name.name }
+    created_by { User.first || FactoryGirl.create(:user) }
   end
 
   factory :user do
