@@ -15,7 +15,7 @@ Feature: Extensive Issue
     When I click on it again
     Then it should be in preview mode
 
-  @javascript @wip
+  @javascript
   Scenario: Show issue info when in extensive mode
     When I click once on the issue
     Then I should see the user who created it

@@ -20,5 +20,5 @@
       %span.created_at=issue.created_at
     %li
       Time spent:
-      %span.time_spent=issue.total_time_spent_on
+      %span.time_spent=time_in_hours_rounded_on_quarters(issue.total_time_spent_on)
       hours
