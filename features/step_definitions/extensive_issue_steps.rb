@@ -31,3 +31,17 @@ Then /^I should see how much time there was spent on it$/ do
     page.find(".time_spent").should have_content(@issue.total_time_spent_on)
   end
 end
+
+When /^I delete the issue by clicking on delete$/ do
+  within "#issue_#{@issue.id}" do
+    within ".delete_issue" do
+      click_button("delete")
+    end
+  end
+end
+
+Then /^I should no longer have that issue$/ do
+  @sprint.issues.should be_empty
+  page.should_not have_selector("#issue_#{@issue.id}")
+end
+

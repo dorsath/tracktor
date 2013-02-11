@@ -102,4 +102,13 @@ class IssuesController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    issue = Issue.find(params[:id])
+    if issue
+      issue.destroy
+    end
+
+    redirect_to :back
+  end
+
 end

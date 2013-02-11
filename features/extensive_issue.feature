@@ -21,3 +21,9 @@ Feature: Extensive Issue
     Then I should see the user who created it
     And I should see when it was created
     And I should see how much time there was spent on it
+
+  @javascript
+  Scenario: Delete an issue
+    When I click once on the issue
+    And I delete the issue by clicking on delete
+    Then I should no longer have that issue
