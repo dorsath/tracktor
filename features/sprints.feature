@@ -18,3 +18,13 @@ Feature: Sprints
     When I fill in the form's name
     And I press enter
     Then I should have a new sprint
+
+  @javascript
+  Scenario: Toggle to sprint options
+    Given I have a project
+    And it has an active sprint
+    And I take a look at the project
+    Then I should not be able to see the sprint's info
+    When I click on the sprint's options button
+    Then I should see the sprint's info
+    

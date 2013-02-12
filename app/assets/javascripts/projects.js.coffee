@@ -10,6 +10,7 @@ $(document).ready ->
 
   add_issue_bindings()
 
+  $(".sprint > .options_toggle").on("click", toggle_sprint_options)
   $("body").keyup(handle_shortcuts)
 
 

@@ -37,3 +37,13 @@
 
 @cancel_create_sprint = ->
   $("#add_sprint_input").parent("div.sprint").remove()
+
+@toggle_sprint_options = ->
+  field = $(this).parent(".sprint").find('.options')
+  if field.is(':hidden')
+    $(this).parent(".sprint").find(".issues").hide()
+    field.show()
+  else
+    $(this).parent(".sprint").find(".issues").show()
+    field.hide()
+
