@@ -5,4 +5,6 @@
     - sprint.issues.each do |issue|
       =render partial: "issues/item", locals: {issue: issue}
   .options
-    created at: #{sprint.created_at}
+    %p created at: #{sprint.created_at}
+    %p=button_to "delete", sprint_path(sprint), method: :delete
+

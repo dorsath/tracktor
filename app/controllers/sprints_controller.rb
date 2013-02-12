@@ -13,4 +13,13 @@ class SprintsController < ApplicationController
     @sprint = Sprint.find(params[:id])
     render layout: false
   end
+
+  def destroy
+    sprint = Sprint.find(params[:id])
+    project = sprint.project
+    if sprint
+      sprint.destroy
+    end
+    redirect_to :back
+  end
 end

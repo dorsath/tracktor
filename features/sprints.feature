@@ -28,3 +28,13 @@ Feature: Sprints
     When I click on the sprint's options button
     Then I should see the sprint's info
     
+  @javascript
+  Scenario: Delete a sprint
+    Given I have a project
+    And it has an active sprint
+    And the active sprint has an issue
+    And I take a look at the project
+    When I click on the sprint's options button
+    And I delete the sprint by clicking delete
+    Then the sprint should be gone
+    And the sprint's issue should be moved to the backlog

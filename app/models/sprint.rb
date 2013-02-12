@@ -4,6 +4,15 @@ class Sprint < ActiveRecord::Base
   belongs_to :project
   has_many :issues
 
+  before_destroy :move_issues_to_backlog
+
+  def move_issues_to_backlog
+    issues.each do |issue|
+      issue.update_attribute(:sprint, project.backlog)
+    end
+  end
+
+
   def is_backlog?
     project.backlog == self
   end

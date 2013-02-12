@@ -56,3 +56,24 @@ Then /^I should not be able to see the sprint's info$/ do
   end
 end
 
+Given /^the active sprint has an issue$/ do
+  @issue = FactoryGirl.create(:issue, sprint: @active_sprint)
+end
+
+When /^I delete the sprint by clicking delete$/ do
+  within "#sprint_#{@active_sprint.id}" do
+    within ".options" do
+      click_button 'delete'
+    end
+  end
+end
+
+Then /^the sprint should be gone$/ do
+  Sprint.exists?(@active_sprint).should be_false
+end
+
+Then /^the sprint's issue should be moved to the backlog$/ do
+  @active_sprint.issues.each do |issue|
+    issue.sprint.should == @project.backlog
+  end
+end
